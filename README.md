@@ -9,12 +9,12 @@
 - Install openocd with rp2040 support from https://github.com/raspberrypi/openocd.git
 
 ```
-git clone https://github.com/raspberrypi/openocd.git
+git clone git clone https://github.com/raspberrypi/openocd.git --recursive --branch rp2040 --depth=1
 cd openocd
 ./bootstrap
-./configure
-make
-make install
+./configure --disable-presto --disable-openjtag
+make -j4
+sudo make install
 ```
 
 ## Building
