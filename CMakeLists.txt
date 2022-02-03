@@ -16,14 +16,16 @@ project(${APP})
 pico_sdk_init()
 
 add_executable(${APP}
-    src/main.c
+  src/main.c
 )
+
+add_subdirectory(freertos)
 
 pico_enable_stdio_usb(${APP} 1)
 pico_enable_stdio_usb(${APP} 0)
 
 # Add pico_stdlib library which aggregates commonly used features
-target_link_libraries(${APP} pico_stdlib)
+target_link_libraries(${APP} pico_stdlib freertos)
 
 # create map/bin/hex/uf2 file in addition to ELF.
 pico_add_extra_outputs(${APP})
